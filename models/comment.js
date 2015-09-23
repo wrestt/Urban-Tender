@@ -5,14 +5,13 @@ var commentSchema = new mongoose.Schema({
   content: String,
   buyer:{
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User'
+    ref: 'User',
   },
   seller:{
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User'
-  }
+    ref: 'User',
+  },
 });
-
 
 var Comment = mongoose.model('Comment', commentSchema);
 

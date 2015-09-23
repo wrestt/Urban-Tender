@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Tender</title>
+    <link rel="stylesheet" href="./styles/style.css" >
+    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="semantic/dist/semantic.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+  </head>
+<header>
+  <div class="ui top attached tabular menu">
+    <a class="item active">
+      Home
+    </a>
+    <a class="item">
+      Users
+    </a>
+    <div class="right menu">
+      <div class="item">
+        <div class="ui transparent icon input">
+          <input type="text" placeholder="Search Items...">
+          <i class="search link icon"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="ui bottom attached segment">
+    <p></p>
+  </div>
+</header>
+  <body>
+    <div class="container">
+      <% if(locals.userInfo !== null){ %>
+         <h1><%=locals.userInfo.name%></h1>
+      <% } %>

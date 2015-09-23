@@ -1,0 +1,19 @@
+<% include ../partials/header %>
+<h1>User Signup</h1>
+<form class="sign-up" action="/signup" method="post">
+  <label for="name">Name:</label>
+  <input type="text" name="user[name]" class='form-control'>
+  <label for="email">Email:</label>
+  <input type="email" name="user[email]" class='form-control'>
+  <label for="password">Password:</label>
+  <input type="password" name="user[password]" class='form-control'>
+  <label for="birthday">Birthday:</label>
+  <input type="date" name="user[birthday]" class='form-control'>
+  <label for="avatar">Profile Picture:</label>
+  <input type="text" name="user[avatar]" class='form-control'>
+  <input type="submit" name="sign-up" value="Sign Up">
+</form>
+</br></br>
+<a href="/login">Login In Here</a>
+
+<% include ../partials/footer %>

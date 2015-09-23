@@ -1,0 +1,13 @@
+<% include ../partials/header %>
+<h1>LOGIN PAGE</h1>
+<form class="login" action="/login" method="post">
+  <label for="email">Email:</label>
+  <input type="text" id='email' name="user[email]">
+  <label for="password">Password:</label>
+  <input type="text" id='password' name="user[password]">
+  </br></br>
+  <input type="submit" name="login-submit" value="Sign In">
+</form>
+</br></br>
+<a href="/signup">Sign Up Here</a>
+<% include ../partials/footer %>
