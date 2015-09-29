@@ -36,6 +36,7 @@ var onUpload = function(err, metadata) {
 };
 
 $('#up-form').submit(function(e) {
+  $('#avatar').val('');
   e.preventDefault();
   ospry.up({
     form: this,
@@ -43,6 +44,7 @@ $('#up-form').submit(function(e) {
       console.log(metadata);
       if (err === null) {
         $('#item-image').val(metadata.url);
+        $('#avatar').val(metadata.url);
         $('#item-form').submit();
       }
     },
@@ -50,12 +52,14 @@ $('#up-form').submit(function(e) {
 });
 
 $('#up-user-edit-form').submit(function(e) {
+  $('#avatar').val('');
   e.preventDefault();
   ospry.up({
     form: this,
     imageReady: function(err, metadata, i) {
       console.log(metadata);
       if (err === null) {
+        console.log(metadata.url);
         $('#avatar').val(metadata.url);
         $('#user-edit-form').submit();
       }
