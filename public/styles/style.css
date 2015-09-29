@@ -7,3 +7,7 @@
 .footerLinkImages{
   max-width: 15px !important;
 };
+
+#item-image-show-page{
+  max-width: 250px;
+}
