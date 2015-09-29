@@ -9,7 +9,7 @@
     </div>
     <div class="col s12" id="tab1">
       <div class="card-panel s12">
-        <form class="update-account" action="/users/<%=user._id%>?_method=PUT" method="post">
+        <form id="user-edit-form" class="update-account" action="/users/<%=user._id%>?_method=PUT" method="post">
           <div class="row">
             <div class="col s5 offset-s1">
               <label for="first-name">First Name:</label>
@@ -52,6 +52,22 @@
             </div>
           </div>
         </form>
+        <div class="row">
+          <div class="col s8 offset-s1">
+            <form id="up-user-edit-form ">
+              <div class="file-field input-field">
+                <div class="btn">
+                  <span>Upload Image</span>
+                  <input type="file">
+                </div>
+                <div class="file-path-wrapper">
+                  <input id="item-edit-image" class="file-path validate" type="text" value="">
+                </div>
+              </div>
+              <button class="hidden-button" type="submit">Upload</button>
+            </form>
+          </div>
+        </div>
         <div class="row">
           <div class="col s5 offset-s1">
             <form action="/users/<%= user._id %>?_method=DELETE" method="post">
@@ -191,6 +207,18 @@
                 <input type="submit" value="Create" class="btn btn-primary">
             </div>
           </div>
+        </form>
+        <form id="up-form">
+          <div class="file-field input-field">
+            <div class="btn">
+              <span>Upload Image</span>
+              <input type="file">
+            </div>
+            <div class="file-path-wrapper">
+              <input id="item-edit-image" class="file-path validate" type="text" value="">
+            </div>
+          </div>
+          <button class="hidden-button"  type="submit">Upload</button>
         </form>
         </br></br>
       </br></br>

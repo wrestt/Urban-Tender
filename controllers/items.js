@@ -27,7 +27,7 @@ app.post('/items', function(req, res) {
       item.seller = user._id;
       user.save();
       item.save();
-      res.redirect('/items');
+      res.redirect('/items/' + item._id + '/edit');
     });
   });
 });

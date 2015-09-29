@@ -13,7 +13,7 @@
         </div>
         <div class="input-field col s5">
           <label for="item-image">Picture:</label>
-          <input id="item-image" type="text" name="item[image]" value="<%=item.image%>">
+          <input id="item-image" type="text" name="item[image]" value='<%=item.image%>'>
         </div>
       </div>
       <div class="row">
@@ -40,6 +40,22 @@
         </div>
       </div>
     </form>
+      <div class="row">
+        <div class="input-field col s10 offset-s1">
+          <form id="up-form">
+            <div class="file-field input-field">
+              <div class="btn">
+                <span>Upload Image</span>
+                <input type="file">
+              </div>
+              <div class="file-path-wrapper">
+                <input id="item-edit-image" class="file-path validate" type="text" value="">
+              </div>
+            </div>
+            <button class="hidden-button"  type="submit">Upload</button>
+          </form>
+        </div>
+      </div>
     </br>
     <div class="row">
       <div class="col s5 offset-s1">
