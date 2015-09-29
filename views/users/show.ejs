@@ -1,5 +1,214 @@
 <% include ../partials/header %>
-<h1>USER SHOW PAGE</h1>
-
-
-<% include ../partials/footer %>
+  </br>
+  <div class="row">
+    <div class="col s12">
+      <ul class="tabs">
+        <li class='tab col s5'><a href="#tab1">Edit Account</a></li>
+        <li class='tab col s5'><a href="#tab2">Edit Items</a></li>
+      </ul>
+    </div>
+    <div class="col s12" id="tab1">
+      <div class="card-panel s12">
+        <form class="update-account" action="/users/<%=user._id%>?_method=PUT" method="post">
+          <div class="row">
+            <div class="col s5 offset-s1">
+              <label for="first-name">First Name:</label>
+              <input type="text" id="first-name" name="user[firstName]" class="validate" autofocus value="<%=user.firstName%>">
+            </div>
+            <div class="col s5">
+              <label for="last-name">Last Name:</label>
+              <input type="text" id="last-name" name="user[lastName]" class="validate" autofocus value="<%=user.lastName%>">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s5 offset-s1">
+              <label for="user-name">Username:</label>
+              <input type="text" id="user-name" name="user[username]" class="validate" autofocus value="<%=user.username%>">
+            </div>
+            <div class="col s5">
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="user[email]" class="validate" autofocus value="<%=user.email%>">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s5 offset-s1">
+              <div class="form-group">
+                <label for="phoneNumber">Phone Number:
+                  <input type="tel" id="phoneNumber" name="user[phoneNumber]" class="validate" autofocus value="<%= user.phoneNumber%>">
+                </label>
+              </div>
+            </div>
+            <div class="col s5">
+              <div class="form-group">
+                <label for="avatar">Profile Picture:
+                  <input type="text" id="avatar" name="user[avatar]" class="validate" autofocus value="<%= user.avatar%>">
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s5 offset-s1">
+              <input type="submit" value="Update Account" class="btn btn-primary">
+            </div>
+          </div>
+        </form>
+        <div class="row">
+          <div class="col s5 offset-s1">
+            <form action="/users/<%= user._id %>?_method=DELETE" method="post">
+              <input type="submit" class="btn" name="delete" value="Delete Account">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col s12" id="tab2">
+      <div class="card-panel s12">
+        <div class="row">
+          <div class="col s5 offset-s1">
+            <h4>New Item</h4>
+          </div>
+        </div>
+        <form id="item-form" class="create-item" action="/items" method="post">
+          <div class="row">
+            <div class="input-field col s5 offset-s1">
+              <label for="item-name">Name:</label>
+              <input id="item-name" type="text" name="item[name]">
+            </div>
+            <div class="input-field col s5">
+              <label for="item-image">Picture:</label>
+              <input id="item-image" type="text" name="item[image]">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s5 offset-s1">
+              <label for="item-kind">Type:</label>
+              <select id="item-kind" name="item[kind]" class="browser-default" class="validate">
+                <optgroup label="Lily">
+                  <option value="asparagus">Asparagus</option>
+                  <option value="garlic">Garlic</option>
+                  <option value="leek">Leek</option>
+                  <option value="onion">Onion</option>
+                </optgroup>
+                <optgroup label="Nighshade">
+                  <option value="peppers">Peppers</option>
+                  <option value="potato">Potato</option>
+                  <option value="tomato">Tomato</option>
+                </optgroup>
+                <optgroup label="Cucumber">
+                  <option value="canataloupe">Canataloupe</option>
+                  <option value="cucumber">Cucumber</option>
+                  <option value="squash">Squash</option>
+                  <option value="watermelon">Watermelon</option>
+                </optgroup>
+                <optgroup label="Grape">
+                  <option value="grape">Grape</option>
+                </optgroup>
+                <optgroup label="Carrot">
+                  <option value="carrot">Carrot</option>
+                  <option value="celery">Celery</option>
+                  <option value="cilantro">Cilantor</option>
+                  <option value="coriander">Coriander</option>
+                  <option value="parsnip">Parsnip</option>
+                </optgroup>
+                <optgroup label="Sunflower">
+                  <option value="artichoke">Artichoke</option>
+                  <option value="lettuce">Lettuce</option>
+                  <option value="sunflower">Sunflower</option>
+                </optgroup>
+                <optgroup label="Citrus">
+                  <option value="grapefruit">Grapefruit</option>
+                  <option value="lemon">Lemon</option>
+                  <option value="lime">Lime</option>
+                  <option value="orange">Orange</option>
+                </optgroup>
+                <optgroup label="Beans">
+                  <option value="beans">Beans</option>
+                  <option value="bean-sprouts">Bean Sprout</option>
+                  <option value="peas">Peas</option>
+                </optgroup>
+                <optgroup label="Goosefoot">
+                  <option value="beet">Beet</option>
+                  <option value="spinach">Spinach</option>
+                  <option value="swiss-chard">Swiss Chard</option>
+                </optgroup>
+                <optgroup label="Palm">
+                  <option value="date">Date</option>
+                </optgroup>
+                <optgroup label="Rose">
+                  <option value="peach">Peach</option>
+                  <option value="apricot">Apricot</option>
+                  <option value="apple">Apple</option>
+                  <option value="pear">Pear</option>
+                  <option value="nectarine">Nectarine</option>
+                </optgroup>
+                <optgroup label="Mustard">
+                  <option value="radish">Radish</option>
+                  <option value="cabbage">Cabbage</option>
+                  <option value="garlic">Garlic</option>
+                  <option value="brussel-sprout">Brussel Sprout</option>
+                  <option value="cauliflower">Cauliflower</option>
+                  <option value="broccoli">Broccoli</option>
+                </optgroup>
+                <optgroup label="Supplies">
+                  <option value="garden-tools">Garden Tools</option>
+                  <option value="seed">Seed</option>
+                  <option value="soil">Soil</option>
+                </optgroup>
+                <optgroup label="Supplies">
+                  <option value="garden-tools">Garden Tools</option>
+                  <option value="seed">Seed</option>
+                  <option value="soil">Soil</option>
+                </optgroup>
+                <optgroup label="Other">
+                  <option value="other-food">Food</option>
+                  <option value="other-supplies">Supplies</option>
+                </optgroup>
+              </select>
+            </div>
+            <div class="col s5">
+              <label for="harvest-date">Harvest Date:</label>
+              <input id="harvest-date" type="date" name="item[date]" class="datepicker">
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s10 offset-s1">
+              <label for="item-description">Description:</label>
+              <textarea id="item-description" name="item[description]" class="materialize-textarea"></textarea>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s5 offset-s1">
+              <label for="item-price">Price:</label>
+              <input id="item-price" type="number" name='item[price]' class="validate">
+            </div>
+            <div class="input-field col s5">
+              <label for="item-quantity">Qauntity:</label>
+              <input id="item-quantity" type="number" name='item[quantity]' class="validate">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s5 offset-s1">
+                <input type="submit" value="Create" class="btn btn-primary">
+            </div>
+          </div>
+        </form>
+        </br></br>
+      </br></br>
+      <h4>Things Forsale</h4>
+      <ul class="collection">
+          <% if(user.items) { %>
+            <% user.items.forEach(function(item){%>
+        <li class="collection-item avatar">
+          <img src="<%= item.image%>" alt="<%= user.name%> <%= item.description%>" class="circle">
+          <span class="title"><a href="/items/<%= item._id%>"><%= item.name%></a></span>
+          <p><%= moment(item.date).format('l') %><br>
+             <%= item.description%>
+          </p>
+          <a href="/items/<%= item._id%>/edit" class="secondary-content">Edit</a>
+        </li>
+            <% })%>
+          <% } %>
+      </ul>
+      </div>
+    </div>
+    <% include ../partials/footer %>

@@ -1,6 +1,6 @@
 var db = require('../models/index');
 
-app.get('/login', routeMiddleware.preventLoginSignup, function(req,res) {
+app.get('/login', routeMiddleware.preventLoginSignup, function(req, res) {
   res.render('users/login');
 });
 
@@ -13,7 +13,7 @@ app.post('/login', function(req, res) {
       res.redirect('/users');
     } else {
       console.log('error', err);
-      res.render('users/login', {user:user});
+      res.render('users/login', {user: user});
     }
   });
 });

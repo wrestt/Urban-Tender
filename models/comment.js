@@ -3,11 +3,11 @@ var mongoose = require('mongoose');
 var commentSchema = new mongoose.Schema({
   date: Date,
   content: String,
-  buyer:{
+  buyer: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
   },
-  seller:{
+  seller: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
   },

@@ -1,5 +1,32 @@
 <% include ../partials/header %>
-<h1>IDEX PAGE</h1>
+  <h1>Users</h1>
+  <div class="card-panel s12">
+    <div class="row">
+      <div class="col s10 offset-s1">
+        <ul>
+          <% users.forEach(function(user){ %>
+            <div class="collection">
+              <li class="collection-item avatar">
+                <img src="<%= user.avatar%>" alt="<%= user.usernaem%> avatar" class="circle">
+                <span class="title">
+                  <a href="/users/<%= user._id%>/items">
+                    <%= user.username%>
+                  </a>
+                </span>
+                <p>
+                  <%= moment(user.bday).format('l') %>
+                    <br>
+                    <%= user.email%>
+                </p>
+                <a href="mailto:<%=user.email%>?subject=Hello,<%=user.username%>" class="secondary-content">
+                  <i class="material-icons">email</i>
+                </a>
+              </li>
+            </div>
+            <% })%>
+        </ul>
+      </div>
+    </div>
+  </div>
 
-
-<% include ../partials/footer %>
+  <% include ../partials/footer %>

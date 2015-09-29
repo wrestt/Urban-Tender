@@ -1,4 +1,53 @@
 <% include ../partials/header %>
-<h1>ITEMS EDIT</h1>
+  <div class="card-panel">
+    <div class="row">
+      <div class="col s5 offset-s1">
+        <h1>Edit Item</h1>
+      </div>
+    </div>
+    <form id="item-form" class="edit-item" action="/items/<%=item._id%>?_method=PUT" method="post">
+      <div class="row">
+        <div class="input-field col s5 offset-s1">
+          <label for="item-name">Name:</label>
+          <input id="item-name" type="text" name="item[name]" value="<%=item.name%>">
+        </div>
+        <div class="input-field col s5">
+          <label for="item-image">Picture:</label>
+          <input id="item-image" type="text" name="item[image]" value="<%=item.image%>">
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s10 offset-s1">
+          <label for="item-description">Description:</label>
+          <textarea id="item-description" name="item[description]" class="materialize-textarea">
+            <%=item.description%>
+          </textarea>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s5 offset-s1">
+          <label for="item-price">Price $:</label>
+          <input id="item-price" type="number" name='item[price]' class="validate" value="<%=item.price%>">
+        </div>
+        <div class="input-field col s5">
+          <label for="item-quantity">Qauntity:</label>
+          <input id="item-quantity" type="number" name='item[quantity]' class="validate" value="<%=item.quantity%>">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s5 offset-s1">
+          <input type="submit" value="Update" class="btn btn-primary">
+        </div>
+      </div>
+    </form>
+    </br>
+    <div class="row">
+      <div class="col s5 offset-s1">
+        <form action="/items/<%= item._id %>?_method=DELETE" method="post">
+          <button type="submit" class="btn" name="delete">Delete Item</button>
+        </form>
+      </div>
+    </div>
+  </div>
 
-<% include ../partials/footer %>
+  <% include ../partials/footer %>

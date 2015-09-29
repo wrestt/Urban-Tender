@@ -1,6 +1,32 @@
 <% include ../partials/header %>
-<h1>ITEMS INDEX</h1>
-  
-
-
-<% include ../partials/footer %>
+  <h1 id="index-title">Fruits & Vegetables</h1>
+  <div class="card-panel">
+    <div class="row">
+      <% items.forEach(function(item){%>
+        <div class='item-filter-cards' id='<%=item.kind%>'>
+        <div class="col s6" >
+          <div class="card medium">
+            <div class="card-image">
+              <img src="<%=item.image%>">
+              <span class="card-title">
+                <%=item.kind%>
+              </span>
+            </div>
+            <div class="card-content">
+              <p>
+                <%=item.description%>
+              </p>
+            </div>
+            <div class="card-action">
+              <a href="/items/<%=item._id%>">More Info</a>
+              <a href="mailto:<%=item.seller[0].email%>?subject=Hello,<%=item.seller[0].firstName%>">
+            Contact Seller
+            </a>
+            </div>
+          </div>
+        </div>
+        </div>
+        <% })%>
+    </div>
+  </div>
+  <% include ../partials/footer %>

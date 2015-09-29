@@ -44,6 +44,7 @@
     "method-override": "^2.3.5",
     "moment": "^2.10.6",
     "mongoose": "^4.1.8",
+    "ospry": "^1.0.4",
     "require-dot-file": "^0.4.0",
     "run-sequence": "^1.1.4",
     "semantic-ui": "^2.1.4",

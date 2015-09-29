@@ -1,28 +1,30 @@
 var db = require('../models/index');
-
+var ospry = require('ospry');
 // ITEM INDEX
 app.get('/items', function(req, res) {
-  db.Item.find({}, function(err, items) {
-    res.render('items/index', {items: items});
+  db.Item.find({})
+  .populate('seller')
+  .exec(function(err, items) {
+    if (err) {
+      console.log('Item Err', err);
+    } else {
+      console.log('DEZZZ Items', items);
+      res.render('items/index', {items: items});
+    }
   });
-});
-
-// NEW ITEM
-app.get('/items/new', routeMiddleware.ensureLoggedIn, function(req, res) {
-  res.render('items/new');
 });
 
 // CREATE ITEM
 app.post('/items', function(req, res) {
-  var newItem = req.body;
+  console.log('made it to items');
+  var newItem = req.body.item;
   db.User.findById(req.session.id, function(err, user) {
     if (!newItem.image) {
-      newItem.image = 'default.gif';
+      newItem.image = '/default.jpg';
     }
-
     db.Item.create(newItem, function(err, item) {
       user.items.push(item);
-      item.owner = user._id;
+      item.seller = user._id;
       user.save();
       item.save();
       res.redirect('/items');
@@ -33,7 +35,7 @@ app.post('/items', function(req, res) {
 // SHOW ITEM
 app.get('/items/:id', function(req, res) {
   db.Item.findById(req.params.id)
-    .populate('user')
+    .populate('seller')
     .exec(function(err, item) {
       if (err) {
         console.log(err);
@@ -45,22 +47,24 @@ app.get('/items/:id', function(req, res) {
 });
 
 // EDIT ITEM
-app.get('/items/:id/edit', function(req, res) {
+app.get('/items/:id/edit', routeMiddleware.ensureCorrectUserItem,
+  function(req, res) {
   db.Item.findById(req.params.id, function(err, item) {
-    res.render('items/edit', {item:item});
+    res.render('items/edit', {item: item});
   });
 });
 
 // UPDATE ITEM
-app.put('/items/:id', function(req, res) {
-  var updateContent = req.body;
+app.put('/items/:id', routeMiddleware.ensureCorrectUserItem,
+  function(req, res) {
+  var updateContent = req.body.item;
+  console.log('*************', req.body.item);
   db.Item.findByIdAndUpdate(req.params.id, updateContent,
     function(err, item) {
       if (err) {
-        console.log(err);
-        res.render('items/edit', {item:item});
+        console.log('update item err', err);
+        res.redirect(item._id);
       } else {
-        console.log(item);
         res.redirect('/items/' + item._id);
       }
     }

@@ -3,7 +3,9 @@ var bcrypt = require('bcrypt');
 var SALT_WORK_FACTOR = 10;
 
 var userSchema = new mongoose.Schema({
-  name: String,
+  firstName: String,
+  lastName: String,
+  username: String,
   email: {
     type: String,
     required: true,
@@ -15,8 +17,8 @@ var userSchema = new mongoose.Schema({
   },
   avatar: String,
   location: String,
-  number: String,
-  items:[{
+  phoneNumber: String,
+  items: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Item',
   }],
@@ -26,6 +28,7 @@ var userSchema = new mongoose.Schema({
   }],
 });
 
+console.log('made it here');
 userSchema.pre('save', function(next) {
   console.log('PRE Save');
   var user = this;

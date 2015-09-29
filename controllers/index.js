@@ -12,6 +12,6 @@ app.get('/logout', function(req, res) {
   res.redirect('/items');
 });
 
-app.get('*', function(req,res) {
+app.get('*', function(req, res) {
   res.render('404');
 });

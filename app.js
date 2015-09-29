@@ -24,9 +24,15 @@ app.use(session({
 app.use(loginMiddleware);
 
 app.use(function(req, res, next) {
-  res.locals.userInfo = req.session.info;
+  db.User.findById(req.session.id, function(err, user) {
+    if (err) {
+      console.log('User Data Err', err);
+    } else {
+      res.locals.userInfo = user;
+    }
+    next();
+  });
   res.locals.userSession = req.session.id;
-  next();
 });
 
 require('./controllers/index');

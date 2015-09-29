@@ -2,7 +2,7 @@ var db = require('../models/index');
 
 //Chat Page
 app.get('', routeMiddleware.ensureLoggedIn, function(req, res) {
-  db.Item.findById(req.params.item_id)
+  db.Item.findById(req.params.item._id)
     .populate('comments')
     .exec(function(err, item) {
       if (err) {
