@@ -3,9 +3,10 @@ $(document).ready(function() {
 });
 
 $('.item-filter').on('click',function(e) {
-  var home = 'http://localhost:3000/items';
+  var homeLocal = 'http://localhost:3000/items';
+  var homeWeb = 'https://urbantender.herokuapp.com/items';
   var location = window.location.href;
-  if (home === location) {
+  if (location === homeWeb) {
     var filterTitle = this.innerHTML;
     var filterPeram = this.innerHTML.toLowerCase();
     e.preventDefault();
